@@ -153,6 +153,11 @@ $(document).on("propertychange input", ".typeable", function() {
 $(document).on("keydown", ".typeable", function(e) {
 	var command = $(this).html();
 
+	if (e.keyCode == 37) return false;
+	if (e.keyCode == 38) return false;
+	if (e.keyCode == 39) return false;
+	if (e.keyCode == 40) return false;
+
 	if (e.keyCode == 13) {
 		e.preventDefault();
 

@@ -33,7 +33,7 @@ var projects = [
 		name: "pixelartfonts",
 		size: "37",
 		desc: "An archive of freely downloadable pixel art fonts.",
-		url: "https://sendmebreadclips.com"
+		url: "https://semishawn.github.io/pixelartfonts/"
 	},
 	{
 		name: "tcd",

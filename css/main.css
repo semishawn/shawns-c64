@@ -1,0 +1,130 @@
+@font-face {
+	font-family: "Commodore 64";
+	font-weight: 400;
+	font-style: normal;
+	src: url("../C64-Mono.woff2") format("woff2");
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	background: var(--bg-color);
+}
+
+* {
+	font-family: "Commodore 64";
+	font-size: 1.55vh;
+	box-sizing: border-box;
+}
+
+.screen-wrapper {
+	position: absolute;
+	padding: 7vh;
+	margin-bottom: 15vh;
+	background: var(--screen-color1);
+	z-index: 10;
+}
+
+.screen {
+	height: 25ch;
+	width: 40ch;
+	background: var(--screen-color2);
+	color: var(--screen-color1);
+	white-space: pre-wrap;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.rainbow {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.rainbow div {
+	height: 1.5vh;
+	width: 100%;
+	border-radius: 999px;
+}
+.rainbow:nth-child(2) div {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.rainbow:nth-child(3) div {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.rainbow div + div {margin-top: 1vh;}
+
+.rainbow div:nth-child(1) {background: #d80000;}
+.rainbow div:nth-child(2) {background: #f48500;}
+.rainbow div:nth-child(3) {background: #f1d900;}
+.rainbow div:nth-child(4) {background: #48bc19;}
+.rainbow div:nth-child(5) {background: #1f6cd8;}
+
+.crt {
+	height: 90vh;
+	pointer-events: none;
+	margin: 0 5vh;
+	filter: drop-shadow(0 0 3vh #000a);
+	z-index: 11;
+}
+
+@keyframes bootUp {
+	100% {opacity: 1;}
+}
+
+.boot {
+	display: inline;
+	opacity: 0;
+	animation: bootUp 1s linear;
+	animation-timing-function: steps(3);
+	animation-fill-mode: forwards;
+}
+
+.code {
+	opacity: 0;
+	animation: bootUp 1s linear;
+	animation-timing-function: steps(1);
+	animation-fill-mode: forwards;
+}
+
+.input {
+	display: inline;
+	width: 100%;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	white-space: normal;
+}
+
+.typeable {
+	outline: none;
+	caret-color: transparent;
+}
+
+.cursor {animation: blink 0.7s infinite step-start;}
+
+.yes, .no {
+	color: var(--screen-color1) !important;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.yes:visited {color: var(--screen-color1) !important;}
+
+.dry-particle {
+	text-decoration: none;
+	pointer-events: none;
+}
+
+@keyframes blink {
+	50% {opacity: 0;}
+}

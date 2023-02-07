@@ -1,28 +1,45 @@
 var projects = [
 	{
+		name: "semipedia",
+		size: "23",
+		desc: "A blog-like pseudo-encyclopedia, of sorts.",
+		url: "https://semipedia.cool/"
+	},
+	{
 		name: "geovanni",
-		size: "17",
-		desc: "A curious little geometry calculator."
+		size: "18",
+		desc: "A curious little geometry calculator.",
+		url: "https://semishawn.github.io/geovanni/"
+	},
+	{
+		name: "sendmebreadclips",
+		size: "134",
+		desc: "An online interface to send me bread clips for my collection.",
+		url: "https://sendmebreadclips.com"
+	},
+	{
+		name: "plate game",
+		size: "124",
+		desc: "A digital license plate minigame.",
+		url: "https://semishawn.github.io/plate-game/"
 	},
 	{
 		name: "kokomo",
 		size: "2",
-		desc: "A happy and healthy in-browser text editor engine."
+		desc: "A happy and healthy in-browser text editor engine.",
+		url: "https://semishawn.github.io/kokomo/"
 	},
 	{
-		name: "semipedia",
-		size: "15",
-		desc: "A blog-like pseudo-encyclopedia, of sorts."
-	},
-	{
-		name: "ppp",
-		size: "7",
-		desc: "Pennsylvania-based license plate minigame."
+		name: "pixelartfonts",
+		size: "37",
+		desc: "An archive of freely downloadable pixel art fonts.",
+		url: "https://sendmebreadclips.com"
 	},
 	{
 		name: "tcd",
-		size: "578",
-		desc: "Triple Cat Deluxe, the best game about cats fighting since the underground cat fighting ring that was outlawed in 2010"
+		size: "9",
+		desc: "Triple Cat Deluxe, the best game about cats fighting since the underground cat fighting ring that was outlawed in 2010",
+		url: "https://hedgy134117.github.io/tcd-new/"
 	}
 ];
 
@@ -167,13 +184,7 @@ $(document).on("keydown", ".typeable", function(e) {
 			var output = $.trim(`
 				HELLO, MY NAME IS SHAWN GALLAGHER.
 
-				IF YOU ARE READING THIS, YOU ARE MOST LIKELY A COLLEGE ADMISSIONS OFFICER.
-				
-				YOUR SCHOOL'S APPLICATION ASKED IF I MAINTAINED AN ONLINE PRESENCE THAT SHOWCASES MY BACKGROUND, TALENTS, OR CREATIVITY.
-				
-				I WAS INTRIGUED BY THIS REQUEST, AND WHILE I DO NOT NECESSARILY OWN A PROFESSIONAL PORTFOLIO, TRENDY BLOG, OR FAMOUS INSTAGRAM ACCOUNT, I HAVE BEEN CODING MY OWN WEBSITES FOR YEARS, AND DID NOT WANT TO MISS THIS OPPORTUNITY TO SHARE MY WORK.
-				
-				HENCE, WELCOME TO SHAWN'S C64. THIS WEBSITE IS A DISPLAY OF VARIOUS HAND-SELECTED ONLINE CODING PROJECTS I HAVE PARTAKEN IN.
+				I'M A 19 YEAR OLD FRESHMAN ATTENDING BLOOMSBURG UNIVERSITY. THIS WEBSITE IS A DISPLAY OF VARIOUS ONLINE CODING PROJECTS I HAVE PARTAKEN IN.
 				
 				TYPE "HELP" (THEN PRESS ENTER) FOR A SITE HOW-TO.
 			`).replace(/\t/g, "");
@@ -182,7 +193,7 @@ $(document).on("keydown", ".typeable", function(e) {
 
 		else if (command == "HELP") {
 			var output = $.trim(`
-				WELCOME TO SHAWN'S C64, BASED QUITE ACCURATELY UPON AN ORIGINAL COMMODORE 64'S INTERFACE. INFORMATION ON THIS SITE CAN BE ACCESSED VIA CONSOLE COMMANDS.
+				WELCOME TO SHAWN'S C64, VISUALLY BASED UPON AN ORIGINAL COMMODORE 64'S INTERFACE. INFORMATION ON THIS SITE CAN BE ACCESSED VIA CONSOLE COMMANDS.
 
 				BELOW IS A COMPREHENSIVE LIST OF COMMANDS. PAY CLOSE ATTENTION TO CHARACTER PLACEMENTS AND USE OF QUOTES WHEN REFERRING TO PROJECTS/PROGRAMS.
 				
@@ -246,9 +257,9 @@ $(document).on("keydown", ".typeable", function(e) {
 		else if (command.startsWith("LOAD")) {
 			var program = $.trim(command.split("\"")[1].split("\"")[0]);
 
-			if (projects.some(i => i.name == program.toLowerCase())) {
-				var href = "https://semishawn.github.io/" + program.toLowerCase();
-				if (program == "TCD") href = "https://hedgy134117.github.io/tcd-new/";
+			if (projects.some(e => e.name == program.toLowerCase())) {
+				var href = projects.find(e => e.name === program.toLowerCase()).url;
+				
 				var data = $.trim(`
 					RUNNING "${$.trim(program)}" WILL OPEN A NEW TAB.
 					IS THIS OKAY?
@@ -286,7 +297,7 @@ $(document).on("keydown", ".typeable", function(e) {
 		}
 
 		else if (command == "CLEAR") {
-			$(".code").empty();
+			code.empty();
 			addInput();
 		}
 
